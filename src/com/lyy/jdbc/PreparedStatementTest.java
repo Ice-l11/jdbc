@@ -19,6 +19,16 @@ import java.util.Scanner;
  **/
 public class PreparedStatementTest {
 
+    /*
+    *  PreparedStatement vs Statement
+    *   1、提高代码的可读性和可维护性；
+    *   2、PreparedStatement能大可能的提高性能：
+    *       2.1 DBServer会对预编译的SQL提供性能优化。因为预编译语句有可能被重复调用，所以语句在被DBServer的编译器编译后的执行代码被缓存下来，那么下次调用只要是相同
+    *           的预编译语句就不需要预编译，只要将参数参入编译过的语句执行代码中就会得到执行；
+    *       2.2 在Statement中，即使是相同的操作但是因为数据不一样，所以整个语句本身不能匹配，没有缓存语句的意义。事实是没有数据库会对普通语句编译后执行代码缓存。
+    *           这样每执行一次就要对传入的语句编译一次；
+    *       2.3 PreparedStatement可以防止SQL注入；
+    **/
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("请输入用户名：");
